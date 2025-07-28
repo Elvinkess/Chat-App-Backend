@@ -1,0 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const load_chat_controller_1 = require("../controllers/load_chat_controller");
+const load_chat_logic_implementation_1 = require("../../core/usecase/logic/load_chat_logic_implementation");
+const programs_1 = require("../programs");
+const auth_middleware_1 = require("../middlewares/auth_middleware");
+const auth_service_1 = require("../../core/infrastructure/service/auth_service");
+let loadChatRoute = (0, express_1.Router)();
+let authService = new auth_service_1.AuthService;
+let authMiddleware = new auth_middleware_1.AuthMiddleware(authService);
+let loadChatLogic = new load_chat_logic_implementation_1.LoadChatLogic(programs_1.userDb, programs_1.messageDb);
+let loadChatController = new load_chat_controller_1.LoadChatController(loadChatLogic);
+loadChatRoute.get("/", authMiddleware.authenticateJWT, loadChatController.loadChat);
+exports.default = loadChatRoute;

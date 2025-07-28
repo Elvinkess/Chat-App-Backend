@@ -1,0 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const programs_1 = require("../programs");
+const user_controller_1 = require("../controllers/user_controller");
+const field_validator_1 = require("../middlewares/field_validator");
+let userRoute = (0, express_1.Router)();
+let validator = new field_validator_1.Validator();
+let userController = new user_controller_1.UserController(programs_1.userLogic);
+userRoute.post("/create", validator.signValidation, validator.validate, userController.create);
+userRoute.post("/signin", userController.signin);
+userRoute.post("/resetpassword", userController.resetPassword);
+userRoute.post("/verifyAndSet", userController.verifyAndResetPassowrd);
+userRoute.get("/:userId", userController.getUser);
+exports.default = userRoute;

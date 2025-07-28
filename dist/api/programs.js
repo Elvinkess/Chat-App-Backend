@@ -1,0 +1,11 @@
+import { UserDb } from "../core/infrastructure/repository/data_access/user_db";
+import { AuthService } from "../core/infrastructure/service/auth_service";
+import { EmailService } from "../core/infrastructure/service/email_service";
+import { HashService } from "../core/infrastructure/service/password_hash";
+import { UserLogic } from "../core/usecase/logic/user_logic_implementation";
+import AppDataSource from "./connection";
+export let userDb = new UserDb(AppDataSource);
+export let hashpassword = new HashService();
+export let auth = new AuthService();
+export let emailService = new EmailService();
+export let userLogic = new UserLogic(userDb, hashpassword, auth, emailService);
