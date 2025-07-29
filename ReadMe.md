@@ -62,7 +62,9 @@ infrastructure/
 * **Input:**  `email`,`newPassword`,`confirmPassword`
 * **Behavior:** Reset your password
 
-
+### ✅ ADD A USER/CHAT
+* **Users/chat are added with their registered email address
+* Group Chat are created/added by group names
 ---
 
 ## 💬 Chat Functionalities
