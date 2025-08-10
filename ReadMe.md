@@ -15,6 +15,25 @@ This is the backend of a real-time chat application powered by WebSockets. It su
 
 ---
 
+## 📁 Project Structure
+
+```plaintext
+domain/
+  dto/
+    request/
+    response/
+    enums/
+  entity/
+interface/
+  logic/
+  services/
+  data_access/
+infrastructure/
+  logic/
+  services/
+```
+
+---
 
 ## 🧑‍💻 User Functionalities
 
