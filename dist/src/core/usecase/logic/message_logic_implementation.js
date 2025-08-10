@@ -105,11 +105,11 @@ class MessageLogic {
                 if (payload.type === message_type_1.MessageType.DIRECT && payload.receiverId) {
                     const receiverSocketId = this.webSocket.getSocketIdForUser((payload.receiverId).toString());
                     if (receiverSocketId) {
-                        this.webSocket.onEmitToUserTyping(payload.receiverId.toString(), "Typing", payload.senderId);
+                        this.webSocket.onEmitToUserTyping(payload.receiverId.toString(), "Typing", payload.name);
                     }
                 }
                 else if (payload.type === message_type_1.MessageType.GROUP && payload.room) {
-                    this.webSocket.onEmitToRoom(payload.room, "Typing", parseInt(payload.senderId));
+                    this.webSocket.onEmitToRoom(payload.room, "Typing", parseInt(payload.name));
                 }
             }));
         });

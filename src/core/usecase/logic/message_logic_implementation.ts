@@ -128,10 +128,10 @@ export class MessageLogic implements IMessageLogic{
               if (payload.type === MessageType.DIRECT && payload.receiverId) {
                 const receiverSocketId =  this.webSocket.getSocketIdForUser((payload.receiverId).toString())
                 if (receiverSocketId) {
-                  this.webSocket.onEmitToUserTyping(payload.receiverId.toString(),"Typing",payload.senderId)
+                  this.webSocket.onEmitToUserTyping(payload.receiverId.toString(),"Typing",payload.name)
                 }
               } else if (payload.type === MessageType.GROUP && payload.room) {
-                this.webSocket.onEmitToRoom(payload.room,"Typing",parseInt(payload.senderId))
+                this.webSocket.onEmitToRoom(payload.room,"Typing",parseInt(payload.name))
               }
 
             })
